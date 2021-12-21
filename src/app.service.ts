@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Param } from '@nestjs/common';
 import axios from 'axios';
 
 const baseURL = 'https://api.blockcypher.com/v1/eth/main/txs/',
@@ -7,9 +7,12 @@ const baseURL = 'https://api.blockcypher.com/v1/eth/main/txs/',
 
 @Injectable()
 export class AppService {
-  async getTransactionDetail() {
+
+
+
+  async getTransactionDetail(id: string | undefined) {
     try {
-      const response = await axios.get(baseURL + transactionId);
+      const response = await axios.get(baseURL + (id || transactionId));
       return ('<h1>the transaction detail</h1> <pre>' +
         JSON.stringify(response.data).toString().replace(/,/g, ', <br/>')
           .replace(`"total"`, `<b>"total"</b>`)
@@ -22,7 +25,7 @@ export class AppService {
     return ('something went wrong')
   }
 
-  async getHello() {
-    return await this.getTransactionDetail();
+  async getHello(request) {
+    return await this.getTransactionDetail(request.params.id);
   }
 }
