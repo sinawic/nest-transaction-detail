@@ -3,6 +3,11 @@ cloned from:
 <a href="https://github.com/nestjs/typescript-starter" target="blank">here</a>
 </p>
 
+<p>
+after installation and runnin `npm run start`
+try accessing `http://localhost:3000/${TRANSACTION_ID}`
+</p>
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
